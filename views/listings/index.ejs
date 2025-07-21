@@ -1,0 +1,24 @@
+<% layout('/layouts/boilerplate') %>
+  <h3 class="text-center mb-4 fw-bold mt-4"></h3>
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-xl-3 g-3">
+    <% for(let listing of alllistings) { %>
+      <a href="/listings/<%= listing._id %>" class="listing-link text-decoration-none">
+        <div class="col">
+          <div class="card h-100">
+            <img 
+              src="<%= listing.image?.url || '/images/default.jpg' %>" 
+              class="card-img-top" 
+              alt="<%= listing.title %> image" 
+              style="height: 20rem; object-fit: cover;"
+            >
+            <div class="card-body">
+              <p class="card-text">
+                <strong><%= listing.title %></strong><br>
+                &#8377;<%= typeof listing.price === 'number' ? listing.price.toLocaleString("en-IN") : "N/A" %>/night
+              </p>
+            </div>
+          </div>
+        </div>
+      </a>
+    <% } %>
+  </div>

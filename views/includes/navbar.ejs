@@ -1,0 +1,233 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom sticky-top">
+  <div class="container-fluid">
+    <!-- Brand Logo with Compass Icon and Text -->
+    <a class="navbar-brand d-flex align-items-center" href="/listings">
+      <i class="fa-regular fa-compass fa-2x me-2" style="color: #fe424d;"></i>
+      <span class="fw-bold" style="color: #fe424d;">WonderLust</span>
+    </a>
+
+    <!-- Toggle Button for Mobile -->
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNav"
+      aria-controls="navbarNav"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Navbar Links -->
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <!-- Close Icon for Mobile Menu -->
+      <button
+        class="btn-close d-lg-none position-absolute top-0 end-0 m-3"
+        aria-label="Close"
+        onclick="closeMobileMenu()"
+      ></button>
+
+      <!-- Main Navigation Links -->
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" href="/listings">Explore</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/listings/new">Add New Listing</a>
+        </li>
+      </ul>
+
+      <!-- Search Bar (Hidden on Mobile) -->
+      <form class="d-flex mx-lg-4 d-none d-lg-flex" role="search">
+        <input
+          class="form-control me-2 search-bar"
+          type="search"
+          placeholder="Search listings..."
+          aria-label="Search"
+        />
+        <button class="btn btn-outline-danger" type="submit">
+          <i class="fas fa-search"></i>
+        </button>
+      </form>
+
+      <!-- User Dropdown Menu -->
+      <ul class="navbar-nav ms-auto">
+        <% if (!currentUser) { %>
+          <!-- Show Sign Up and Log In if user is not logged in -->
+          <li class="nav-item">
+            <a class="nav-link" href="/signup">Sign Up</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/login">Log In</a>
+          </li>
+        <% } else { %>
+          <!-- Show User Dropdown if user is logged in -->
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle d-flex align-items-center"
+              href="#"
+              id="navbarDropdown"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              <i class="fas fa-user-circle fa-lg me-2"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="/logout">Log Out</a></li>
+            </ul>
+          </li>
+        <% } %>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Custom CSS for Navbar -->
+<style>
+  /* Navbar Styles */
+  .navbar {
+    background-color: #ffffff !important; /* White background */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  }
+
+  .navbar-brand i {
+    font-size: 1.5rem; /* Increase icon size */
+  }
+
+  .nav-link {
+    font-size: 1rem;
+    color: #333333 !important; /* Dark text color */
+    margin: 0 10px;
+    transition: color 0.3s ease;
+  }
+
+  .nav-link:hover {
+    color: #fe424d !important; /* Custom color on hover */
+  }
+
+  .nav-link.active {
+    font-weight: bold;
+    color: #fe424d !important; /* Custom color for active link */
+  }
+
+  .navbar-toggler {
+    border: none;
+  }
+
+  .navbar-toggler:focus {
+    box-shadow: none;
+  }
+
+  /* Search Bar Styles */
+  .search-bar {
+    border-radius: 20px; /* Rounded corners */
+    border: 1px solid #dddddd; /* Light border */
+  }
+
+  .btn-outline-danger {
+    border-radius: 20px; /* Rounded corners */
+    border-color: #fe424d; /* Red border */
+    color: #fe424d; /* Red text */
+  }
+
+  .btn-outline-danger:hover {
+    background-color: #fe424d; /* Red background on hover */
+    color: #ffffff; /* White text on hover */
+  }
+
+  /* Dropdown Menu Styles */
+  .dropdown-menu {
+    border: none;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  }
+
+  .dropdown-item {
+    font-size: 0.9rem;
+    color: #333333; /* Dark text */
+  }
+
+  .dropdown-item:hover {
+    background-color: #f8f9fa; /* Light background on hover */
+    color: #fe424d; /* Red text on hover */
+  }
+
+  /* Scrollable Mobile Menu */
+  @media (max-width: 992px) {
+    .navbar-collapse {
+      position: fixed;
+      top: 0;
+      right: -100%; /* Hide menu off-screen by default */
+      width: 100%; /* Full width */
+      height: 100vh; /* Full height */
+      background-color: #ffffff; /* White background */
+      padding: 1rem;
+      transition: right 0.3s ease;
+      overflow-y: auto; /* Make it scrollable */
+      z-index: 1000; /* Ensure it's above other content */
+    }
+
+    .navbar-collapse.show {
+      right: 0; /* Slide in from the right */
+    }
+
+    .navbar-nav {
+      margin-top: 3rem; /* Space for the toggle button */
+    }
+
+    .nav-link {
+      font-size: 1.2rem; /* Larger text for mobile */
+      margin: 15px 0; /* Adjust spacing for mobile */
+    }
+
+    /* Close Icon Styling */
+    .btn-close {
+      font-size: 1.5rem;
+      color: #fe424d;
+      cursor: pointer;
+    }
+
+    /* Hide Search Bar on Mobile */
+    .d-flex.mx-lg-4 {
+      display: none !important;
+    }
+
+    /* User Dropdown on Mobile */
+    .dropdown-menu {
+      position: static; /* Make dropdown menu part of the mobile menu */
+      border: none;
+      box-shadow: none;
+    }
+
+    .dropdown-item {
+      font-size: 1.1rem; /* Larger text for mobile */
+      padding: 10px 20px; /* More padding for better tap targets */
+    }
+  }
+</style>
+
+<!-- JavaScript to Handle Mobile Menu -->
+<script>
+  function closeMobileMenu() {
+    const navbarCollapse = document.querySelector(".navbar-collapse");
+    navbarCollapse.classList.remove("show");
+  }
+
+  document.addEventListener("DOMContentLoaded", function () {
+    const navbarToggler = document.querySelector(".navbar-toggler");
+    const navbarCollapse = document.querySelector(".navbar-collapse");
+
+    navbarToggler.addEventListener("click", function () {
+      navbarCollapse.classList.toggle("show");
+    });
+
+    // Close the menu when a link is clicked
+    const navLinks = document.querySelectorAll(".nav-link");
+    navLinks.forEach((link) => {
+      link.addEventListener("click", function () {
+        closeMobileMenu();
+      });
+    });
+  });
+</script>

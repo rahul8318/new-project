@@ -1,0 +1,76 @@
+<% layout('/layouts/boilerplate') %>
+
+  <div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-lg-6 col-md-8 col-sm-10">
+        <div class="card shadow-lg border-0 rounded-3">
+          <div class="card-body p-4">
+            <h3 class="text-center mb-4">Edit Listing</h3>
+            <form action="/listings/<%= listing._id %>?_method=PUT" method="POST" class="needs-validation" novalidate
+              enctype="multipart/form-data"
+              >
+              
+              <!-- Listing Name -->
+              <div class="mb-3">
+                <label class="form-label fw-bold">Listing Name</label>
+                <input type="text" name="listing[title]" class="form-control p-2" value="<%= listing.title %>" required>
+                <div class="valid-feedback">Looks good!</div>
+                <div class="invalid-feedback">Please provide a valid listing name.</div>
+              </div>
+              <div class="mb-3">
+                <p>Orignal Img</p>
+                <img src="<%= listing.image.url %>" alt="Listing Image" class="img-fluid mb-3" style="max-width: 100%;">
+              </div>
+
+              <!-- Image URL -->
+              <div class="mb-3">
+                <label class="form-label fw-bold">Upload Img</label>
+                <input type="file" name="listing[image][url]" class="form-control p-2" value="<%= listing.image.url %>" required>
+                <div class="valid-feedback">Looks good!</div>
+                <div class="invalid-feedback">Please provide a valid image .</div>
+              </div>
+
+              <!-- Description -->
+              <div class="mb-3">
+                <label class="form-label fw-bold">Description</label>
+                <textarea name="listing[description]" class="form-control p-2" rows="3" required><%= listing.description %></textarea>
+                <div class="valid-feedback">Looks good!</div>
+                <div class="invalid-feedback">Please provide a valid description.</div>
+              </div>
+
+              <!-- Price -->
+              <div class="mb-3">
+                <label class="form-label fw-bold">Price (₹)</label>
+                <input type="number" name="listing[price]" class="form-control p-2" value="<%= listing.price %>" required>
+                <div class="valid-feedback">Looks good!</div>
+                <div class="invalid-feedback">Please provide a valid price.</div>
+              </div>
+
+              <!-- Location -->
+              <div class="mb-3">
+                <label class="form-label fw-bold">Location</label>
+                <input type="text" name="listing[location]" class="form-control p-2" value="<%= listing.location %>" required>
+                <div class="valid-feedback">Looks good!</div>
+                <div class="invalid-feedback">Please provide a valid location.</div>
+              </div>
+
+              <!-- Country -->
+              <div class="mb-3">
+                <label class="form-label fw-bold">Country</label>
+                <input type="text" name="listing[country]" class="form-control p-2" value="<%= listing.country %>" required>
+                <div class="valid-feedback">Looks good!</div>
+                <div class="invalid-feedback">Please provide a valid country.</div>
+              </div>
+
+              <!-- Submit Button -->
+              <div class="text-start">
+                <button type="submit" class="btn btn-sm text-white fw-bold" style="background-color: #fe424d; padding: 5px 15px;">Save</button>
+              </div>
+
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </script>

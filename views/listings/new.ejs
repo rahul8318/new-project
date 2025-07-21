@@ -1,0 +1,64 @@
+<% layout('/layouts/boilerplate') %>
+
+  <div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-lg-6 col-md-8 col-sm-10">
+        <div class="card shadow-lg border-0 rounded-3">
+          <div class="card-body p-4">
+            <h3 class="text-center mb-4">Create New Listing</h3>
+            <form action="/listings" method="POST" class="needs-validation" novalidate enctype="multipart/form-data">
+
+              <div class="mb-3">
+                <label class="form-label fw-bold">Listing Name</label>
+                <input type="text" name="listing[title]" class="form-control p-2" placeholder="Enter Name" required>
+                <div class="valid-feedback">Looks good!</div>
+                <div class="invalid-feedback">Please enter a listing name.</div>
+              </div>
+              <div class="mb-3">
+                <label class="form-label fw-bold">Upload Img</label>
+                <input type="file" name="listing[image][url]" class="form-control p-2" placeholder="Enter Image URL">
+                <div class="valid-feedback">Default URL!</div>
+                <div class="invalid-feedback">Please enter a valid image URL.</div>
+                required
+              </div>
+
+
+              <div class="mb-3">
+                <label class="form-label fw-bold">Description</label>
+                <textarea name="listing[description]" class="form-control p-2" rows="3" placeholder="Enter Description" required></textarea>
+                <div class="valid-feedback">Looks good!</div>
+                <div class="invalid-feedback">Please enter a description.</div>
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label fw-bold">Price (₹)</label>
+                <input type="number" name="listing[price]" class="form-control p-2" placeholder="Enter Price" required>
+                <div class="valid-feedback">Looks good!</div>
+                <div class="invalid-feedback">Please enter a valid price.</div>
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label fw-bold">Location</label>
+                <input type="text" name="listing[location]" class="form-control p-2" placeholder="Enter Location" required>
+                <div class="valid-feedback">Looks good!</div>
+                <div class="invalid-feedback">Please enter a location.</div>
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label fw-bold">Country</label>
+                <input type="text" name="listing[country]" class="form-control p-2" placeholder="Enter Country" required>
+                <div class="valid-feedback">Looks good!</div>
+                <div class="invalid-feedback">Please enter a country.</div>
+              </div>
+
+              <div class="text-start">
+                <button type="submit" class="btn btn-sm text-white fw-bold" style="background-color: #fe424d; padding: 5px 15px;">Add</button>
+              </div>
+
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
